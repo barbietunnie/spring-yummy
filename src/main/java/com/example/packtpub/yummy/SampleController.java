@@ -19,7 +19,7 @@ public class SampleController {
     }
 
     @RequestMapping("many")
-    public String sayTheTimeManyTimes(@RequestParam() String name, @RequestParam int repetitions) {
+    public String sayTheTimeManyTimes(@RequestParam() String name, @RequestParam(defaultValue = "10") int repetitions) {
         return IntStream.rangeClosed(1, repetitions)
                         .mapToObj(i -> i + ". Hello, " + name + "! Now it is " + LocalDateTime.now())
                         .collect(Collectors.joining("\n"));
