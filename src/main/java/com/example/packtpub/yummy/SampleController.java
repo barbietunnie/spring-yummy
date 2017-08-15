@@ -32,6 +32,13 @@ public class SampleController {
                 .collect(Collectors.joining("\n"));
     }
 
+    @RequestMapping("many/{name}/{repetitions}")
+    public String sayTheTimeManyParamsPath(Params params) {
+        return IntStream.rangeClosed(1, params.getRepetitions())
+                .mapToObj(i -> i + ". Hello, " + params.getName() + "! Now it is " + LocalDateTime.now())
+                .collect(Collectors.joining("\n"));
+    }
+
     static class Params {
         String name;
         int repetitions;
