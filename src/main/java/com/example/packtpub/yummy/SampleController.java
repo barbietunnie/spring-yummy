@@ -24,4 +24,32 @@ public class SampleController {
                         .mapToObj(i -> i + ". Hello, " + name + "! Now it is " + LocalDateTime.now())
                         .collect(Collectors.joining("\n"));
     }
+
+    @RequestMapping("manyParams")
+    public String sayTheTimeManyParams(Params params) {
+        return IntStream.rangeClosed(1, params.getRepetitions())
+                .mapToObj(i -> i + ". Hello, " + params.getName() + "! Now it is " + LocalDateTime.now())
+                .collect(Collectors.joining("\n"));
+    }
+
+    static class Params {
+        String name;
+        int repetitions;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getRepetitions() {
+            return repetitions;
+        }
+
+        public void setRepetitions(int repetitions) {
+            this.repetitions = repetitions;
+        }
+    }
 }
