@@ -1,10 +1,7 @@
 package com.example.packtpub.yummy;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
@@ -39,23 +36,30 @@ public class SampleController {
                 .collect(Collectors.joining("\n"));
     }
 
+    @RequestMapping("many2/{name}/{repetitions}")
+    public String sayTheTimeManyPathExplicit(@PathVariable String name, @PathVariable int repetitions) {
+        return IntStream.rangeClosed(1, repetitions)
+                .mapToObj(i -> i + ". Hello, " + name + "! Now it is " + LocalDateTime.now())
+                .collect(Collectors.joining("\n"));
+    }
+
     static class Params {
         String name;
         int repetitions;
 
-        public String getName() {
+        String getName() {
             return name;
         }
 
-        public void setName(String name) {
+        void setName(String name) {
             this.name = name;
         }
 
-        public int getRepetitions() {
+        int getRepetitions() {
             return repetitions;
         }
 
-        public void setRepetitions(int repetitions) {
+        void setRepetitions(int repetitions) {
             this.repetitions = repetitions;
         }
     }
