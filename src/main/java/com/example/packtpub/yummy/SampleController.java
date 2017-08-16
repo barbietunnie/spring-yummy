@@ -43,7 +43,8 @@ public class SampleController {
                 .collect(Collectors.joining("\n"));
     }
 
-    @RequestMapping(value = "manyParams", method = RequestMethod.POST)
+//    @RequestMapping(value = "manyParams", method = RequestMethod.POST)
+    @PostMapping(value = "manyParams")
     public String sayTheTimeManyPost(@RequestBody Params params) {
         return IntStream.rangeClosed(1, params.getRepetitions())
                 .mapToObj(i -> i + ". Hello, " + params.getName() + "! Now it is " + LocalDateTime.now())
