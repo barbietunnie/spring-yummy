@@ -55,6 +55,13 @@ public class SampleController {
         String name;
         int repetitions;
 
+        public Params() {}
+
+        public Params(String name, int repetitions) {
+            this.name = name;
+            this.repetitions = repetitions;
+        }
+
         String getName() {
             return name;
         }
