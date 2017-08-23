@@ -21,12 +21,12 @@ public class BookmarksController {
 
     @PostMapping
     public ResponseEntity<Void> addBookmark(@RequestBody Bookmark bookmark) {
-        bookmarkService.addBookmark(bookmark);
+        UUID uuid = bookmarkService.addBookmark(bookmark);
 //        return new ResponseEntity<>(HttpStatus.CREATED);
         return ResponseEntity.created(
                 BasicLinkBuilder.linkToCurrentMapping()
                                 .slash("bookmark")
-                                .slash(UUID.randomUUID())
+                                .slash(uuid)
                                 .toUri()
         ).build();
     }

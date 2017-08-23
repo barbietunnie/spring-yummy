@@ -20,6 +20,6 @@ public class BookmarkController {
 
     @GetMapping("{id}")
     public Resource<Bookmark> getBookmark(@PathVariable UUID id) {
-        return new Resource<>(new Bookmark("http://packtpub.com"));
+        return new Resource<>(bookmarkService.find(id));
     }
 }
