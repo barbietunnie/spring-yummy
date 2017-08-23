@@ -3,11 +3,7 @@ package com.example.packtpub.yummy.service;
 import com.example.packtpub.yummy.model.Bookmark;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class BookmarkService {
@@ -24,5 +20,9 @@ public class BookmarkService {
             return db.get(id);
 
         throw new NoSuchElementException();
+    }
+
+    public Collection<Bookmark> findAll() {
+        return db.values();
     }
 }

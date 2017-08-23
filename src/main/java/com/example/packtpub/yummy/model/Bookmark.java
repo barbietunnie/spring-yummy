@@ -12,7 +12,7 @@ public class Bookmark {
 //    @JsonCreator
     public Bookmark(@JsonProperty("url") String url) {
         this.url = url;
-        uuid = null;
+        uuid = UUID.randomUUID();
     }
 
     @JsonCreator
